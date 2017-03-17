@@ -83,8 +83,8 @@ export default class Message extends Base {
 
   /**
    * Sets keyboard of the message
-   * The value of reply_markup is set to the sanitized keyboard properties
-   * i.e. reply_markup = JSON.stringify(kb.getProperties())
+   * The value of reply_markup WILL ADD the sanitized keyboard properties
+   * i.e. reply_markup += JSON.stringify(kb.getProperties())
    * @param  {object} kb A Keyboard instance
    * @return {object} returns the message object
    */
@@ -92,6 +92,14 @@ export default class Message extends Base {
     this._keyboard = kb;
     return this;
   }
-
+  /**
+   * Sets INLINE keyboard of the message
+   * @param  {object} inlinekb A Keyboard instance
+   * @return {object} returns the message object
+   */
+  inlineKeyboard(inlinekb) {
+    this.properties.reply_markup += inlinekb;
+    return this;
+  }
   // This class inherits Base's send method
 }
