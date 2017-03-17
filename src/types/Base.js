@@ -30,9 +30,9 @@ export default class Base extends EventEmitter {
   send(bot) {
     if (this._keyboard) {
       const replyMarkup = JSON.stringify(this._keyboard.getProperties());
-      this.properties.reply_markup = replyMarkup;
+      this.properties.reply_markup += replyMarkup;
     }
-
+    
     let messageId;
     return new Promise(resolve => {
       bot.api[this.method](this.properties).then(response => {
