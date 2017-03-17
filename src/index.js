@@ -170,8 +170,9 @@ export default class Bot extends EventEmitter {
     }
 
     update.forEach(res => {
-      const msg = res.message || res.edited_message || res.channel_post || res.edited_channel_post;
+      const msg = res.message || res.edited_message || res.channel_post || res.edited_channel_post || res.callback_query;
       let text = msg.text;
+      let data = msg.data;
       if (!text) {
         return;
       }
@@ -240,5 +241,6 @@ export {
   BulkMessage,
   Forward,
   Question,
-  Keyboard
+  Keyboard,
+  InlineKeyboard
 };
