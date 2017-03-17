@@ -241,6 +241,5 @@ export {
   BulkMessage,
   Forward,
   Question,
-  Keyboard,
-  InlineKeyboard
+  Keyboard
 };
